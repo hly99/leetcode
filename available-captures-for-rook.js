@@ -1,49 +1,18 @@
-var numRookCaptures = function(board) {
-    var n,m
-    for(var i=0;i<8;i++){
-        for(var j=0;j<8;j++){
-            if(board[i][j]=="R"){
-                n=i
-                m=j
-            }
+var reverseOnlyLetters = function(S) {
+    var arr=S.split("")
+    var add=new Array();
+    var p=S.match(/[A-Za-z]/g)
+    if(p==null){
+        return S
+    }
+    var t=p.length-1;
+    for(var i=0;i<arr.length;i++){
+        if(!/[A-Za-z]/.test(S[i])){
+            add[i]=S[i];
+        }else{
+            add[i]=p[t];
+            t--
         }
     }
-    var k,js=0
-    for(k=n-1;k>=0;k--){
-        if(board[k][m]=="B"){
-            break;
-        }
-        if(board[k][m]=="p"){
-            js++;
-            break;
-        }
-    }
-    for(k=n+1;k<8;k++){
-        if(board[k][m]=="B"){
-            break;
-        }
-        if(board[k][m]=="p"){
-            js++;
-            break;
-        }
-    }
-    for(k=m-1;k>=0;k--){
-        if(board[n][k]=="B"){
-            break;
-        }
-        if(board[n][k]=="p"){
-            js++;
-            break;
-        }
-    }
-    for(k=m+1;k<8;k++){
-        if(board[n][k]=="B"){
-            break;
-        }
-        if(board[n][k]=="p"){
-            js++;
-            break;
-        }
-    }
-    return js
+    return add.join("")
 };
